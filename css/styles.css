@@ -34,6 +34,7 @@ img{
 img:hover{
     transform: scale(1.05);
     transition: transform 0.3s ease;
+    transform:scale(1.1);
 }
 
 /*nombre del perfil*/
@@ -95,5 +96,10 @@ nav ul li a:hover{
     section:last-child{
         grid-column:2;
     }
+}
+
+body img{
+margin:10px;
+border-radius:6px;
 }
 
