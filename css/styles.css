@@ -57,12 +57,33 @@ nav ul li a{
     background: #2b1a8d;
     color: white;
     border-radius: 6px;
-    margin: 10px;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 nav ul li a:hover{
+    background: #362b41;
     color: #f1447e;
+}
+
+
+
+/*GRIDS PARA ESCRITORIO*/
+@media (min-width: 768px) {
+    main{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+        align-items: center;
+        max-width: 1000px;
+        margin: auto;
+
+    }
+    section:first-child{
+        grid-column:1;
+    }
+    section:last-child{
+        grid-column:2;
+    }
 }
