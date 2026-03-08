@@ -1,0 +1,68 @@
+/*reseat basico*/
+body{
+    margin: 20px;
+    font-family: 'times new roman', Helvetica, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom right,#f3d9ef, #2e20f1, #5e029c);
+    min-height: 100vh;
+}
+
+/*ocntenedor principal*/
+main{
+    padding: 20px 40px;
+}
+
+/*seccion perfil*/
+section{
+    background: #93c0f3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/*foto de perfil*/
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/*nombre del perfil*/
+h1{
+    margin-top: 10px;
+    font-family: Tahoma, sans-serif;
+    color: #100d3d;
+}
+
+/*menu*/
+nav ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    font-family: Tahoma, sans-serif;
+}
+
+/*enlaces del menu*/
+nav ul li a{
+    display:inline-block;
+    width: 120px;
+    padding: 10px 20px;
+    background: #2b1a8d;
+    color: white;
+    border-radius: 6px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover{
+    color: #f1447e;
+}
