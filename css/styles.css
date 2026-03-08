@@ -31,12 +31,19 @@ img{
     object-fit: cover;
     margin-bottom: 15px;
 }
+img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
 
 /*nombre del perfil*/
 h1{
     margin-top: 10px;
     font-family: Tahoma, sans-serif;
     color: #100d3d;
+}
+h1::before{
+    content: "👤 ";
 }
 
 /*menu*/
@@ -62,9 +69,11 @@ nav ul li a{
     font-weight: bold;
     transition: color 0.3s ease;
 }
+
 nav ul li a:hover{
     background: #362b41;
     color: #f1447e;
+    transform:scale(1.05);
 }
 
 
@@ -87,3 +96,4 @@ nav ul li a:hover{
         grid-column:2;
     }
 }
+
