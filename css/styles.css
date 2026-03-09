@@ -1,105 +1,332 @@
 /*reseat basico*/
-body{
-    margin: 20px;
+body {
+    margin: 0px;
     font-family: 'times new roman', Helvetica, sans-serif;
-    padding: 20px;
+    padding: 00px;
     box-sizing: border-box;
-    background: linear-gradient(to bottom right,#f3d9ef, #2e20f1, #5e029c);
+    background: linear-gradient(#0e0438, #a4b2ff, #fdfdfd);
     min-height: 100vh;
 }
 
-/*ocntenedor principal*/
-main{
-    padding: 20px 40px;
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #c3c6ca;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-/*seccion perfil*/
-section{
-    background: #93c0f3;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.navbar {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
 }
 
-/*foto de perfil*/
-img{
+/*______________________________________________________________________*/
+
+/*estilos de la zona izquierda del navbar superior*/
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    background: #949494;
+}
+
+/*estilos del la zona central del navbar superior*/
+.nav-center {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-icon {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    color: #3b3b3b;
+    transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+    background: #2b2b2b;
+    color: white;
+    transform: scale(1.1);
+}
+
+/*estilos de la zona derecha del navbar superior*/
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 30%;
+    cursor: pointer;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+
+/*_____________________________________________________________________*/
+
+/*estilos para la portada del perfil*/
+.cover {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+/*contenedor de la portada del perfil*/
+.cover-container {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+}
+
+/*imagne de portada del perfil*/
+.cover-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+/*superposicion de la foto de perfil sobre la portada*/
+.profile-section {
+    position: absolute;
+    bottom: -80px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/*estilos de la foto de perfil en la portada*/
+.profile-photo {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    border: 5px solid rgb(0, 0, 0);
     object-fit: cover;
-    margin-bottom: 15px;
-}
-img:hover{
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-    transform:scale(1.1);
 }
 
-/*nombre del perfil*/
-h1{
-    margin-top: 10px;
-    font-family: Tahoma, sans-serif;
-    color: #100d3d;
-}
-h1::before{
-    content: "👤 ";
+/*estilos para la informacion del perfil en la portada*/
+.profile-info h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #ffffff;
 }
 
-/*menu*/
-nav ul{
-    list-style: none;
-    padding: 0;
+.profile-info p {
+    font-size: 20px;
+    color: #000000;
+    margin-top: 20px;
+}
+
+/*______________________________________________________________________*/
+
+/*comtenedor del menu de navegacion*/
+.profile-menu {
+    margin-top: 90px;
     display: flex;
     justify-content: center;
-    gap: 50px;
-    font-family: Tahoma, sans-serif;
 }
 
-/*enlaces del menu*/
-nav ul li a{
-    display:inline-block;
-    width: 120px;
-    padding: 10px 20px;
-    background: #2b1a8d;
-    color: white;
-    border-radius: 6px;
+/*contenedor interno del menu de navegacion*/
+.menu-container {
+    width: 100%;
+    max-width: 1200px;
+    border-bottom: ipx solid #ddd;
+}
+
+/*layaut del menu de navegacion*/
+.menu-items {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    padding: 10px 0;
+}
+
+/*estilo se cada item del menu de navegacion*/
+.menu-item a {
     text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    color: #000000;
+    font-weight: 1000;
+    padding: 10px 15px;
+    display: block;
+    border-radius: 8px;
 }
 
-nav ul li a:hover{
-    background: #362b41;
-    color: #f1447e;
-    transform:scale(1.05);
+.menu-item a:hover {
+    background: #6f8fd4;
+    color: #ffffff;
+    transform: scale(1.15);
+    transition: all 0.3s ease;
+}
+
+/*marcarla seccion como activa*/
+.menu-item.active a {
+    color: #1877f2;
+}
+
+.menu-item.active {
+    position: relative;
+}
+
+.menu-item.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+    width: 100%;
+    width: 3px;
+    background: #1877f2;
+    border-radius: 3px;
+}
+
+
+/*______________________________________________________________________*/
+/*centramos el contenido de la pagian*/
+.profile-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/*creacion del las columnas para el contenido del perfil la columna derecha ocupa el doble de espacio*/
+.content-container {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+/*estilo para la columna izquierda del contenido del perfil*/
+.profile-left {
+    background: linear-gradient(#ffffff, #858585);
+    padding: 15px;
+    border-radius: 10px;
+    height: fit-content;
+}
+
+/*estilo para la columna derecha del contenido del perfil*/
+.profile-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/*estilos para cada publicacion en la columna derecha del contenido del perfil*/
+.post {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 
 
-/*GRIDS PARA ESCRITORIO*/
-@media (min-width: 768px) {
-    main{
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 30px;
-        align-items: center;
-        max-width: 1000px;
-        margin: auto;
+/*_______________________________________________________________________*/
+/*estilos para las cards de publicaciones*/
+.post {
+    background: hsl(203, 64%, 89%);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
 
+/*encabezado de cada publicacion*/
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/*informacion del usuario*/
+.post-user h4 {
+    font-size: 16px;
+    margin: 0;
+    color: #000000;
+}
+
+.post-user span {
+    font-size: 12px;
+    color: #000000;
+}
+
+/*imagen del post*/
+.post-image {
+    width: 100%;
+    border-radius: 10px;
+    max-height: 400px;
+    object-fit: cover;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.post-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/*botones de interaccion del post*/
+.post-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/*estilos para los botones de interaccion del post*/
+.post-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.post-actions button:hover {
+    background: #6f8fd4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*responsive design para pantallas pequeñas*/
+@media (max-width: 768px) {
+    .content-container {
+        grid-template-columns: 1fr;
     }
-    section:first-child{
-        grid-column:1;
-    }
-    section:last-child{
-        grid-column:2;
-    }
 }
-
-body img{
-margin:10px;
-border-radius:6px;
-}
-

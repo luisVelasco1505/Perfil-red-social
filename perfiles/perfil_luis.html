@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Luis</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar superior -->
+    <header>
+        <nav class="navbar">
+
+            <div class="nav-left">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="../img/logo.png">
+                </div>
+
+
+                <!-- Buscador -->
+                <div class="search">
+                    <input type="text" placeholder="Buscar en Mi perfil">
+                </div>
+            </div>
+
+            <div class="nav-center">
+                <!-- Inicio -->
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M3 9.5l9-7 9 7" />
+                        <path d="M9 22V12h6v10" />
+                    </svg>
+                </div>
+
+                <!-- Videos -->
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <polygon points="23 7 16 12 23 17 23 7" />
+                        <rect x="1" y="5" width="15" height="14" rx="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="nav-right">
+
+                <!-- Notificaciones -->
+                <div class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 01-3.46 0" />
+                    </svg>
+                </div>
+
+                <!-- Perfil -->
+                <img src="../img/foto-perfil.png.png" class="profile-pic">
+
+            </div>
+
+        </nav>
+    </header>
+
+
+    <!-- estructura de la portada del perfil -->
+    <section class="cover">
+        <div class="cover-container">
+
+            <img src="../img/portada.jpg" class="cover-image">
+            <div class="profile-section">
+                <img src="../img/foto-perfil.png.png" class="profile-photo">
+                <div class="profile-info">
+                    <h1>Luis Velasco</h1>
+                    <p>248 amigos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--menu de navegacion del perfil -->
+    <section class="profile-menu">
+        <div class="menu-container">
+
+            <ul class="menu-items">
+                <li class="menu-item"><a href="#informacion">Información</a></li>
+                <li class="menu-item"><a href="#amigos">Amigos</a></li>
+                <li class="menu-item"><a href="#fotos">Fotos</a></li>
+                <li class="menu-item"><a href="#publicaciones">Publicaciones</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!--seccion para el cotenido del perfil -->
+    <section class="profile-content">
+        <div class="content-container">
+            <div class="profile-left">
+                <h3>Datos personales</h3>
+                <p>→Vive en Bogotá</p>
+                <p>→nacio el 6 de diciembre de 1997</p>
+                <p>→nacio en el departemento del Huila</p>
+                <p>→trebaja como diseñador de interiores</p>
+                <p>→estudia antualmente ING de softwere</p>
+                <p>→Univesidad Manuela Beltran</p>
+            </div>
+            <div class="profile-right">
+                <div class="post">
+                    <h4>Luis Velasco</h4>
+                    <p>Mi primera publicación</p>
+                </div>
+                <div class="post">
+                    <h4>Luis Velasco</h4>
+                    <p>Aprendiendo HTML y CSS</p>
+                </div>
+
+                <!--cards de publicaciones-->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="../img/profile.jpg" class="post-avatar">
+                        <div class="post-user">
+                            <h4>Luis Velasco</h4>
+                            <span>Hace 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="post-text">
+                        <p>Trabajando en el diseño de mi perfil usando CSS Grid.</p>
+                    </div>
+                    <div class="post-image">
+                        <img src="../img/post.jpg">
+                    </div>
+                    <div class="post-actions">
+                        <button>👍 Me gusta</button>
+                        <button>💬 Comentar</button>
+                        <button>↗ Compartir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
