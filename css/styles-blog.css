@@ -54,3 +54,20 @@
 .profile-page header {
     position: fixed;
 }
+
+.btn-perfil {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #1877f2;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-perfil:hover {
+    background: #145dbf;
+    transform: scale(1.05);
+}
