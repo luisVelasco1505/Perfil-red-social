@@ -46,6 +46,7 @@ perfil-red-social
 │   └── styles.css
 │
 ├── perfiles
+│   ├── juan.html
 │   └── luis.html
 │
 ├── index.html
@@ -83,6 +84,10 @@ Incluye:
 - explicación de selectores avanzados
 - explicación del enfoque Mobile-First
 - galería de imágenes con interacción hover
+
+**perfiles/juan.html**
+
+Página adicional con el componente de perfil (misma estructura base del `index.html`) para el usuario Juan.
 
 ---
 
