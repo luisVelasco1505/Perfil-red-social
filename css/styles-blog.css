@@ -1,0 +1,56 @@
+/*------------------------------------------------------------------------*/
+/*estilos para el blog*/
+.blog-container {
+    max-width: 900px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/*titulo principal del blog*/
+.blog-header {
+    text-align: center;
+    margin-top: 80px;
+}
+
+/*secciones del blog*/
+.blog-section {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/*lista de selectores para el blog*/
+.selectors-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.selectors-list li {
+    margin-bottom: 10px;
+}
+
+/*galeriad de inmagenes pedidas por la guia*/
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/*hover en las imagenes requisitos de la guia*/
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.profile-page header {
+    position: fixed;
+}
