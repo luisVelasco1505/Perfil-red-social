@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,6 +9,18 @@
 </head>
 
 <body>
+    <!--
+        =========================
+        ESTRUCTURA GENERAL PERFIL
+        =========================
+        Esta pagina se divide en:
+        1) Header superior (simulacion de barra principal)
+        2) Portada del perfil
+        3) Menu interno por secciones (tabs)
+        4) Contenido principal: Informacion, Amigos, Fotos, Publicaciones
+        5) Modal para visualizar y eliminar media en grande
+        6) Script externo con toda la logica en /js/perfil-luis.js
+    -->
     <!-- Navbar superior -->
     <header>
         <nav class="navbar">
@@ -69,7 +81,12 @@
     </header>
 
 
-    <!-- estructura de la portada del perfil -->
+    <!--
+        PORTADA DEL PERFIL
+        - cover-image: imagen de portada
+        - profile-photo: foto principal del usuario
+        - profile-info: nombre y resumen rapido
+    -->
     <section class="cover">
         <div class="cover-container">
 
@@ -84,12 +101,18 @@
         </div>
     </section>
 
-    <!--menu de navegacion del perfil -->
+    <!--
+        MENU DE SECCIONES
+        Importante:
+        - Los href son anclas (#informacion, #amigos, etc.)
+        - JS intercepta estos clics y los convierte en "tabs"
+          (muestra/oculta secciones sin hacer scroll).
+    -->
     <section class="profile-menu">
         <div class="menu-container">
 
             <ul class="menu-items">
-                <li class="menu-item"><a href="#informacion">Información</a></li>
+                <li class="menu-item"><a href="#informacion">Informacion</a></li>
                 <li class="menu-item"><a href="#amigos">Amigos</a></li>
                 <li class="menu-item"><a href="#fotos">Fotos</a></li>
                 <li class="menu-item"><a href="#publicaciones">Publicaciones</a></li>
@@ -97,53 +120,253 @@
         </div>
     </section>
 
-    <!--seccion para el cotenido del perfil -->
+    <!--
+        CONTENIDO PRINCIPAL
+        content-container tiene dos columnas:
+        - Izquierda: Informacion (id="informacion")
+        - Derecha: Amigos, Fotos y Publicaciones
+        En modo tabs, JS aplica clases para mostrar solo una seccion.
+    -->
     <section class="profile-content">
         <div class="content-container">
-            <div class="profile-left">
-                <h3>Datos personales</h3>
-                <p>→Vive en Bogotá</p>
-                <p>→nacio el 6 de diciembre de 1997</p>
-                <p>→nacio en el departemento del Huila</p>
-                <p>→trebaja como diseñador de interiores</p>
-                <p>→estudia antualmente ING de softwere</p>
-                <p>→Univesidad Manuela Beltran</p>
+            <!--
+                SECCION: INFORMACION
+                - Los textos visibles usan data-info-key
+                - El formulario #info-form edita esos mismos campos
+                - JS guarda cambios en localStorage
+            -->
+            <div class="profile-left info-card" id="informacion">
+                <div class="info-header">
+                    <h3>Informacion del perfil</h3>
+                    <button type="button" id="edit-profile-info" class="info-edit-btn">Editar informacion</button>
+                </div>
+
+                <p class="info-bio" data-info-key="bio">Disenador de interiores y estudiante de ingenieria de software.</p>
+
+                <ul class="info-list">
+                    <li><strong>Nombre completo:</strong> <span data-info-key="fullName">Luis Velasco</span></li>
+                    <li><strong>Ciudad actual:</strong> <span data-info-key="currentCity">Bogota, Colombia</span></li>
+                    <li><strong>Ciudad de origen:</strong> <span data-info-key="hometown">Neiva, Huila</span></li>
+                    <li><strong>Fecha de nacimiento:</strong> <span data-info-key="birthDate">6 de diciembre de 1997</span></li>
+                    <li><strong>Estado sentimental:</strong> <span data-info-key="relationship">Soltero</span></li>
+                    <li><strong>Trabajo:</strong> <span data-info-key="job">Disenador de interiores</span></li>
+                    <li><strong>Universidad:</strong> <span data-info-key="education">Universidad Manuela Beltran</span></li>
+                    <li><strong>Correo:</strong> <span data-info-key="email">luis.velasco@email.com</span></li>
+                    <li><strong>Telefono:</strong> <span data-info-key="phone">+57 300 000 0000</span></li>
+                    <li><strong>Sitio web:</strong> <span data-info-key="website">https://miportafolio.com</span></li>
+                    <li><strong>Idiomas:</strong> <span data-info-key="languages">Espanol, Ingles</span></li>
+                    <li><strong>Se unio:</strong> <span data-info-key="joinedDate">Marzo 2022</span></li>
+                </ul>
+
+                <!-- Formulario de edicion del perfil (inicia oculto) -->
+                <form class="info-form hidden" id="info-form">
+                    <label for="info-full-name">Nombre completo</label>
+                    <input id="info-full-name" name="fullName" type="text">
+
+                    <label for="info-bio">Biografia</label>
+                    <textarea id="info-bio" name="bio" rows="3"></textarea>
+
+                    <label for="info-current-city">Ciudad actual</label>
+                    <input id="info-current-city" name="currentCity" type="text">
+
+                    <label for="info-hometown">Ciudad de origen</label>
+                    <input id="info-hometown" name="hometown" type="text">
+
+                    <label for="info-birth-date">Fecha de nacimiento</label>
+                    <input id="info-birth-date" name="birthDate" type="text">
+
+                    <label for="info-relationship">Estado sentimental</label>
+                    <input id="info-relationship" name="relationship" type="text">
+
+                    <label for="info-job">Trabajo</label>
+                    <input id="info-job" name="job" type="text">
+
+                    <label for="info-education">Universidad</label>
+                    <input id="info-education" name="education" type="text">
+
+                    <label for="info-email">Correo</label>
+                    <input id="info-email" name="email" type="email">
+
+                    <label for="info-phone">Telefono</label>
+                    <input id="info-phone" name="phone" type="text">
+
+                    <label for="info-website">Sitio web</label>
+                    <input id="info-website" name="website" type="url">
+
+                    <label for="info-languages">Idiomas</label>
+                    <input id="info-languages" name="languages" type="text">
+
+                    <label for="info-joined-date">Se unio</label>
+                    <input id="info-joined-date" name="joinedDate" type="text">
+
+                    <div class="info-form-actions">
+                        <button type="submit">Guardar cambios</button>
+                        <button type="button" id="cancel-profile-info">Cancelar</button>
+                    </div>
+                </form>
             </div>
+            <!--
+                COLUMNA DERECHA DEL PERFIL
+                Contiene las secciones de Amigos, Fotos y Publicaciones.
+            -->
             <div class="profile-right">
-                <div class="post">
-                    <h4>Luis Velasco</h4>
-                    <p>Mi primera publicación</p>
+                <!--
+                    SECCION: AMIGOS
+                    Cada friend-card tiene:
+                    - Foto/avatar
+                    - Nombre
+                    - Amigos en comun
+                    - Botones de accion
+                    JS maneja:
+                    - "Agregar a amigos" (toggle)
+                    - "Eliminar" (quita la tarjeta)
+                -->
+                <div class="post friends-card" id="amigos">
+                    <h3>Amigos</h3>
+                    <div class="friends-list">
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F468.svg" alt="Avatar emoji de Andres Ruiz" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Andres Ruiz</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>11 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F469.svg" alt="Avatar emoji de Camila Torres" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Camila Torres</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>8 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F9D1.svg" alt="Avatar emoji de Sebastian Rojas" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Sebastian Rojas</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>6 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F471.svg" alt="Avatar emoji de Valentina Cruz" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Valentina Cruz</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>14 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F9D4.svg" alt="Avatar emoji de Daniel Perez" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Daniel Perez</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>9 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+
+                        <article class="friend-card">
+                            <img src="https://openmoji.org/data/color/svg/1F467.svg" alt="Avatar emoji de Laura Mendoza" class="friend-photo">
+                            <div class="friend-body">
+                                <h4 class="friend-name">Laura Mendoza</h4>
+                                <p class="friend-meta"><span class="mutual-icon" aria-hidden="true">👥</span>5 amigos en comun</p>
+                                <button type="button" class="friend-btn primary">Agregar a amigos</button>
+                                <button type="button" class="friend-btn danger">Eliminar</button>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                <div class="post">
-                    <h4>Luis Velasco</h4>
-                    <p>Aprendiendo HTML y CSS</p>
+                <!--
+                    SECCION: FOTOS / VIDEOS
+                    - Carga automatica desde carpeta /fotos (si el servidor lo permite)
+                    - Carga manual desde dispositivo con input file multiple
+                    - Click en media abre modal en grande
+                -->
+                <div class="post photos-card" id="fotos">
+                    <h3>Fotos</h3>
+                    <p class="photos-help">Esta galeria mostrara automaticamente las imagenes que agregues en la carpeta <strong>/fotos</strong>.</p>
+                    <div class="photos-actions">
+                        <button type="button" id="add-media-btn" class="add-media-btn">Agregar fotos o videos</button>
+                        <input id="add-media-input" type="file" accept="image/*,video/*" multiple class="hidden">
+                    </div>
+                    <div class="photos-grid" id="photos-grid"></div>
                 </div>
 
-                <!--cards de publicaciones-->
-                <div class="post">
-                    <div class="post-header">
-                        <img src="../img/profile.jpg" class="post-avatar">
-                        <div class="post-user">
-                            <h4>Luis Velasco</h4>
-                            <span>Hace 2 horas</span>
-                        </div>
-                    </div>
 
-                    <div class="post-text">
-                        <p>Trabajando en el diseño de mi perfil usando CSS Grid.</p>
-                    </div>
-                    <div class="post-image">
-                        <img src="../img/post.jpg">
-                    </div>
-                    <div class="post-actions">
-                        <button>👍 Me gusta</button>
-                        <button>💬 Comentar</button>
-                        <button>↗ Compartir</button>
+
+                <!--
+                    SECCION: PUBLICACIONES
+                    - Contiene publicaciones existentes
+                    - Formulario oculto para crear nuevas publicaciones
+                    - JS agrega boton "Publicar nueva historia" debajo de cada item
+                -->
+                <div class="post publications-card" id="publicaciones">
+                    <h3>Publicaciones</h3>
+                    <form class="publication-form hidden" id="publication-form">
+                        <label for="publication-text">Escribe tu publicacion</label>
+                        <textarea id="publication-text" rows="3" placeholder="¿Que estas pensando?" required></textarea>
+
+                        <label for="publication-time">Tiempo (opcional)</label>
+                        <input id="publication-time" type="text" placeholder="Hace 5 minutos">
+
+                        <label for="publication-image-file">Imagen (opcional)</label>
+                        <input id="publication-image-file" type="file" accept="image/*">
+                        <p class="publication-help">Selecciona una imagen desde tu dispositivo.</p>
+
+                        <button type="submit">Publicar</button>
+                    </form>
+                    <div class="publications-list">
+
+                        <article class="publication-item">
+                            <div class="post-header">
+                                <img src="../img/foto-perfil.png.png" class="post-avatar" alt="Avatar de Luis Velasco">
+                                <div class="post-user">
+                                    <h4>Luis Velasco</h4>
+                                    <span>Hace 2 horas</span>
+                                </div>
+                            </div>
+
+                            <div class="post-text">
+                                <p>Trabajando en el diseño de mi perfil usando CSS Grid.</p>
+                            </div>
+                            <div class="post-image">
+                                <img src="../img/post.jpg" alt="Publicacion de Luis">
+                            </div>
+                            <div class="post-actions">
+                                <button>Me gusta</button>
+                                <button>Comentar</button>
+                                <button>Compartir</button>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <!--
+        MODAL DE MEDIA
+        Se usa para mostrar imagen/video en grande y permitir eliminacion.
+        Se controla completamente desde JS.
+    -->
+    <div id="media-modal" class="media-modal hidden" role="dialog" aria-modal="true" aria-label="Visor de fotos y videos">
+        <div class="media-modal-content">
+            <button type="button" id="media-close-btn" class="media-close-btn" aria-label="Cerrar visor">✕</button>
+            <div id="media-viewer" class="media-viewer"></div>
+            <button type="button" id="media-delete-btn" class="media-delete-btn">Eliminar</button>
+        </div>
+    </div>
+    <!-- Script principal del perfil (modulos de informacion, amigos, fotos y publicaciones) -->
+    <script src="../js/perfil-luis.js" defer></script>
 </body>
 
 </html>
+
